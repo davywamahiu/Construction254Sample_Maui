@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.BackgroundColor="Gray"
+           xmlns:local ="clr-namespace:Construction_Ke.ViewModel.AccountsVM"
+           xmlns:md ="clr-namespace:Construction_Ke.Model"
+             x:Class="Construction_Ke.Views.AccountView.WBAccountPop.WBPaymentPopup">
+    <ScrollView>
+        <VerticalStackLayout  BackgroundColor="WhiteSmoke" HorizontalOptions="Center" Spacing="15">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Confirm Customer Payment!" />
+                
+                <Button TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+            <Entry Text="{Binding AccountNo}" PlaceholderColor="DodgerBlue"  Keyboard="Numeric" WidthRequest="200" Placeholder="AccountNo"/>
+            <Entry Text="{Binding MpesaUid}" PlaceholderColor="DodgerBlue"  WidthRequest="200" Placeholder="MpesaUid"/>
+            <Entry Text="{Binding Deposit}" PlaceholderColor="DodgerBlue"  Keyboard="Numeric" WidthRequest="200" Placeholder="Deposit"/>
+            <Entry Text="{Binding Driver}" PlaceholderColor="DodgerBlue"  WidthRequest="200" Placeholder="Driver Name"/>
+            <Entry Text="{Binding Phone}" PlaceholderColor="DodgerBlue"  WidthRequest="200" Placeholder="Mobile Phone">
+                <Entry.Behaviors>
+                    <mct:TextValidationBehavior InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged" 
+                        MaximumLength="10"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry Text="{Binding Plate}" PlaceholderColor="DodgerBlue"  WidthRequest="200" Placeholder="Number Plate"/>
+            <Entry Text="{Binding Material}" PlaceholderColor="DodgerBlue"  WidthRequest="200" Placeholder="Material"/>
+            <Entry Text="{Binding Tonage}" PlaceholderColor="DodgerBlue"  WidthRequest="200" Placeholder="Tonnes"/>
+            <DatePicker Date="{Binding PaidOn}"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Command="{Binding SaveBridgePayment}" TextColor="White" BackgroundColor="LightGreen"  Text="SAVE" WidthRequest="120"/>
+                <Button TextColor="White" BackgroundColor="Crimson" Text="CANCEL" WidthRequest="130"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

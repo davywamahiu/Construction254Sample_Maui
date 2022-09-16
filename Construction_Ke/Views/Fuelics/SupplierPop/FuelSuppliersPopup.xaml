@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.Fuelics.SupplierPop.FuelSuppliersPopup"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             >
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="WhiteSmoke" WidthRequest="350" Spacing="10">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Add New Supplier!" />
+
+                <Button WidthRequest="50" BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+            <Label Text="Please Fill the details below about supplier"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding NumberPlate, Mode=TwoWay}" WidthRequest="240" Placeholder="Number Plate"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Supplier, Mode=TwoWay}" WidthRequest="240" Placeholder="Supplier"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Driver, Mode=TwoWay}" WidthRequest="240" Placeholder="Driver"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding SupplierPhone, Mode=TwoWay}" WidthRequest="240" Placeholder="Phone"/>
+            <HorizontalStackLayout Spacing="30" Padding="10">
+                <Button Command="{Binding SaveSupplier}" FontSize="Medium" WidthRequest="100" Text="Save"/>
+                <Button Command="{Binding CancelCommand1}" BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

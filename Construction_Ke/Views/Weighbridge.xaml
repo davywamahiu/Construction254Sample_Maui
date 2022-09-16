@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.Weighbridge"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             xmlns:xls="control"
+             Title="Weighbridge">
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <VerticalStackLayout Grid.Column="1" Spacing="15" Padding="5">
+
+                <HorizontalStackLayout>
+                    <RadioButton x:Name="grb" CheckedChanged="RadioButton_CheckedChanged" Content="Gross Weight"/>
+                    <RadioButton CheckedChanged="RadioButton_CheckedChanged_1" Content="Tare Weight"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label x:Name="readin" Text="Reading"/>
+                    <Entry x:Name="readss" Text="{Binding Firstcode}" WidthRequest="20" Placeholder="Reading"/>
+                    <Entry x:Name="tickets" Text="{Binding Ticket, Mode=TwoWay}" Placeholder="Ticket" WidthRequest="120"/>
+                </HorizontalStackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <DatePicker />
+                    <Entry x:Name="time" Text="{Binding Time}" Placeholder="Time" WidthRequest="100"/>
+                </StackLayout>
+                <Picker SelectedIndexChanged="driver_SelectedIndexChanged" x:Name="driver" SelectedItem="{Binding Driver}" Title="Driver" WidthRequest="200"/>
+                <Entry WidthRequest="200"
+                        x:Name="plate"
+                        Text="{Binding Plate}"
+                        Placeholder="Number Plate">
+
+                </Entry>
+                <Entry x:Name="phone" Text="{Binding Phone}" Placeholder="Phone" WidthRequest="200"/>
+                <Entry x:Name="kampuni" Text="{Binding Driver}" Placeholder="Company" WidthRequest="200"/>
+                <Picker SelectedItem="{Binding Material}"  x:Name="material" SelectedIndexChanged="material_SelectedIndexChanged" ItemsSource="{Binding Material}" Title="MateriaL" WidthRequest="200"/>
+                <Entry x:Name="amount" Placeholder="Amount" Text="{Binding Amount}" WidthRequest="200"/>
+                <HorizontalStackLayout Spacing="7">
+                    <Button BackgroundColor="LightGreen" TextColor="White" x:Name="SaveLoads" Command="{Binding SaveFirstWeight}" FontSize="Medium" WidthRequest="150" Text="Save"/>
+                    <Button Command="{Binding CancelCommand}" BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Padding="1" Spacing="10" BackgroundColor="DodgerBlue">
+                        <Grid ColumnSpacing="100">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button HeightRequest="60" VerticalOptions="Center" Grid.Column="0" BackgroundColor="WhiteSmoke" Clicked="Button_Clicked_2" WidthRequest="100" ImageSource="reset.png" CornerRadius="8"/>
+                            <HorizontalStackLayout VerticalOptions="Center" Spacing="30" Grid.Column="1">
+                                <Label VerticalTextAlignment="Center" WidthRequest="150" x:Name="reads" Text="{Binding OutputText}" TextColor="GreenYellow" FontSize="60"/>
+                                <Label VerticalTextAlignment="Center" Text="KG" SemanticProperties.HeadingLevel="Level2"/>
+                            </HorizontalStackLayout>
+                            <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" Spacing="5">
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="Todays Sales" FontAttributes="Bold" TextColor="White"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="Sales: " FontAttributes="Bold"/>
+                                    <Label Text=""/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="Customers Pending: " FontAttributes="Bold"/>
+                                    <Label Text=""/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            <ScrollView MaximumWidthRequest="180" Grid.Column="3">
+                                <Editor Grid.Column="3" AutoSize="TextChanges" Text="Notifications to you all, am humbled to introduce you to my new app. welcome"/>
+                            </ScrollView>
+                            
+                        </Grid>
+                        
+                        
+
+                    </HorizontalStackLayout>
+
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+                        <HorizontalStackLayout Spacing="20" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                            <VerticalStackLayout Spacing="15" Padding="10">
+                                <HorizontalStackLayout Spacing="30">
+                                    <Button Clicked="btnGross_Clicked" x:Name="btnGross" TextColor="Black" BackgroundColor="WhiteSmoke" Text="Gross" ImageSource="readgross.png"/>
+                                    <Button Clicked="btnTare_Clicked" x:Name="btnTare" TextColor="Black" BackgroundColor="WhiteSmoke" Text="Tare" ImageSource="readtare.png"/>
+                                </HorizontalStackLayout>
+                                <Entry x:Name="grossw" TextChanged="Entry_TextChanged" Text="{Binding Weight}" Placeholder="Gross Weight" WidthRequest="200"/>
+                                <Entry x:Name="sweigt" TextChanged="Entry_TextChanged_1" Text="{Binding SWeight}" Placeholder="Tare Weight" WidthRequest="200"/>
+                                <Entry Text="{Binding Tonage}" x:Name="netwei" Placeholder="Net Weight" WidthRequest="200"/>
+                                <Button BackgroundColor="WhiteSmoke" TextColor="Black" Text="Reload List" Command="{Binding LoadItemsCommand}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="80"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <!--<Label Text="#" TextColor="DodgerBlue" Grid.Column="0"/>-->
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Ticket"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="Plate"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text="Driver"/>
+                                    <Label Grid.Row="0" Grid.Column="4" Text="Phone"/>
+                                    <Label Grid.Row="0" Grid.Column="5" Text="Material"/>
+                                    <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="6" Text="Amount"/>
+                                    <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="7" Text="Gross W"/>
+                                </Grid>
+                                <Frame>
+                                    <RefreshView HeightRequest="300" x:DataType="local:ListWeightViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                                        <CollectionView SelectionChanged="CollectionView_SelectionChanged" SelectionMode="Single" MinimumHeightRequest="200" MaximumHeightRequest="300" ItemsSource="{Binding Items}">
+
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid  x:DataType="model:FirstWeight">
+
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="10"/>
+                                                            <ColumnDefinition Width="70"/>
+                                                            <ColumnDefinition Width="90"/>
+                                                            <ColumnDefinition Width="120"/>
+                                                            <ColumnDefinition Width="100"/>
+                                                            <ColumnDefinition Width="100"/>
+                                                            <ColumnDefinition Width="70"/>
+                                                            <ColumnDefinition Width="80"/>
+                                                            <ColumnDefinition Width="1"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="20"/>
+                                                        </Grid.RowDefinitions>
+                                                        <!--<CheckBox Color="DodgerBlue" Grid.Column="0" />-->
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Ticket}">
+
+                                                        </Label>
+                                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Plate}"/>
+                                                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Driver}"/>
+                                                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding Phone}"/>
+                                                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding Material}"/>
+                                                        <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="6" Text="{Binding Amount}"/>
+                                                        <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="7" Text="{Binding Weight}"/>
+                                                        <Label IsVisible="false" Grid.Row="0" Grid.Column="8" Text="{Binding Time}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </RefreshView>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                        <!--<TableView Grid.Column="1" Grid.Row="0" Intent="Data" BackgroundColor="DodgerBlue" MaximumHeightRequest="400" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="True" IsEnabled="True" IsVisible="True">
+                            <TableSection AutomationProperties.HelpText="unique row" AutomationProperties.Name="Id" Title="Id"/>
+                            
+                            <TableSection AutomationProperties.Name="Ticket" Title="Ticket"/>
+
+                            <TableSection AutomationProperties.Name="Plate" Title="No. Plate"/>
+                            <TableSection AutomationProperties.Name="Driver" Title="Driver"/>
+                            <TableSection AutomationProperties.Name="Material" Title="Material"/>
+                            <TableSection AutomationProperties.Name="Amount" Title="Cost/Tone"/>
+                            <TableSection AutomationProperties.Name="Tonage" Title="Total Tonage"/>
+                            <TableSection AutomationProperties.Name="NetWeight" Title="Net Weight"/>
+                            <TableSection AutomationProperties.Name="TotalCost" Title="TotalCost"/>
+
+                        </TableView>-->
+                        <HorizontalStackLayout  Spacing="35" Grid.Row="2">
+                            <Button BackgroundColor="WhiteSmoke" Clicked="Button_Clicked"  ImageSource="weight_station.png" CornerRadius="5"  />
+                            <Button BackgroundColor="WhiteSmoke" Command="{Binding CancelCommand}"  ImageSource="broom.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+                            <Button BackgroundColor="WhiteSmoke" Command="{Binding LoadGetWBReports}" ImageSource="printer.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+                            <Button BackgroundColor="WhiteSmoke" Clicked="Button_Clicked_3" ImageSource="microsoft_admin.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+                            <Button BackgroundColor="WhiteSmoke" ImageSource="camera.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+                            <Button BackgroundColor="WhiteSmoke" Clicked="Button_Clicked_1"  ImageSource="settinz.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+                        </HorizontalStackLayout>
+
+                    </Grid>
+                </Grid>
+            </VerticalStackLayout>
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.Fuelics.FuelRequesition"
+             Title="FuelRequesition">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Grid.Column="1" Spacing="10">
+                    <Label Text="Fuel Requisition" TextColor="DodgerBlue" FontSize="Subtitle"/>
+                    <Entry Placeholder="Requ ID" WidthRequest="240"/>
+                    <Picker Title="Supplier" WidthRequest="240"/>
+                    <Entry Placeholder="Quantity" WidthRequest="240"/>
+                    <HorizontalStackLayout>
+                        <Editor HeightRequest="80" Placeholder="Requirements" WidthRequest="240"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30" Padding="20" Grid.Column="1" Grid.Row="2">
+                        <Button FontSize="Medium" WidthRequest="100" Text="Save"/>
+                        <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="2" Padding="10">
+                    <HorizontalStackLayout>
+                        <SearchBar Placeholder="Search" WidthRequest="200"/>
+
+                    </HorizontalStackLayout>
+
+                    <Frame>
+                        <CollectionView MinimumHeightRequest="200" MaximumHeightRequest="250">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <HorizontalStackLayout>
+                        <RadioButton Content="Requisition ID"/>
+                        <RadioButton Content="Supplier"/>
+                        <RadioButton Content="Quantity"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Select a record to edit"/>
+                </VerticalStackLayout>
+
+            </Grid>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Grid.Column="1" Spacing="10">
+                    <Label Text="Spare Parts Requisition" TextColor="DodgerBlue" FontSize="Subtitle"/>
+                    <Entry Placeholder="Requ ID" WidthRequest="240"/>
+                    <Picker Title="Supplier" WidthRequest="240"/>
+                    
+                    <Entry Placeholder="Quantity" WidthRequest="240"/>
+                    <HorizontalStackLayout>
+                        <Editor HeightRequest="80" Placeholder="Requirements" WidthRequest="240"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30" Padding="20" Grid.Column="1" Grid.Row="2">
+                        <Button FontSize="Medium" WidthRequest="100" Text="Save"/>
+                        <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="2" Padding="10">
+                    <HorizontalStackLayout>
+                        <SearchBar Placeholder="Search" WidthRequest="200"/>
+
+                    </HorizontalStackLayout>
+
+                    <Frame>
+                        <CollectionView MinimumHeightRequest="200" MaximumHeightRequest="250">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <HorizontalStackLayout>
+                        <RadioButton Content="Requisition ID"/>
+                        <RadioButton Content="Supplier"/>
+                        <RadioButton Content="Quantity"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Select a record to edit"/>
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Grid.Column="1" Spacing="7">
+                    <Label Text="Service Requisition" TextColor="DodgerBlue" FontSize="Subtitle"/>
+                    <Entry Placeholder="Requ ID" WidthRequest="240"/>
+                    <Picker Title="Service Provider" WidthRequest="240"/>
+                    <Picker Title="Service Type" WidthRequest="240"/>
+                    <HorizontalStackLayout>
+                        <Editor HeightRequest="80" Placeholder="Requirements" WidthRequest="240"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="30" Padding="20" Grid.Column="1" Grid.Row="2">
+                        <Button FontSize="Medium" WidthRequest="100" Text="Save"/>
+                        <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="2" Padding="10">
+                    <HorizontalStackLayout>
+                        <SearchBar Placeholder="Search" WidthRequest="200"/>
+
+                    </HorizontalStackLayout>
+
+                    <Frame>
+                        <CollectionView MinimumHeightRequest="200" MaximumHeightRequest="250">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <HorizontalStackLayout>
+                        <RadioButton Content="Requisition ID"/>
+                        <RadioButton Content="Supplier"/>
+                        <RadioButton Content="Quantity"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Select a record to edit"/>
+                </VerticalStackLayout>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

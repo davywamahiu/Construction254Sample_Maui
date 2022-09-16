@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.FuelPage"
+             
+             Title="FuelPage">
+    <StackLayout>
+        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Frame  Grid.Column="0" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="pump.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="150"
+                                           MaximumWidthRequest="150"
+                                           HorizontalOptions="Center" />
+                    <Label HorizontalTextAlignment="Center" Text="Fuel Manager"></Label>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Black" Command="{Binding LoadReceiveFuel}" MaximumWidthRequest="150" Text="Receive Fuel" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Column="1" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="igas_station.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="150"
+                                           MaximumWidthRequest="150"
+                                           HorizontalOptions="Center" />
+                    <Label HorizontalTextAlignment="Center" Text="Refuel Manager"></Label>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Black" Command="{Binding LoadRefuel}" MaximumWidthRequest="150" Text="Refuel Vehicle" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Column="2" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="printer.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="150"
+                                           MaximumWidthRequest="150"
+                                           HorizontalOptions="Center" />
+                    <Label HorizontalTextAlignment="Center" Text="Report Manager"></Label>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Black" Command="{Binding LoadFuelReport}" MaximumWidthRequest="150" Text="View Reports" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Column="0" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="settinz.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="150"
+                                           MaximumWidthRequest="150"
+                                           HorizontalOptions="Center" />
+                    <Label HorizontalTextAlignment="Center" Text="Repair Manager"></Label>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Black" Command="{Binding LoadRepairs}" MaximumWidthRequest="160" FontAutoScalingEnabled="True"  Text="Repairs/Damages" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Column="1" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="shoppe.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="150"
+                                           MaximumWidthRequest="150"
+                                           HorizontalOptions="Center" />
+                    <Label HorizontalTextAlignment="Center" Text="Requisition Manager"></Label>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Black" Command="{Binding LoadFuelRequisition}" MaximumWidthRequest="160" Text="Manage Requisition" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Column="2" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="administrative_tools.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="150"
+                                           MaximumWidthRequest="150"
+                                           HorizontalOptions="Center" />
+                    <Label HorizontalTextAlignment="Center" Text="Settings"></Label>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Black" MaximumWidthRequest="160" Text="Common Settings" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.ProjectsDS.TaskListPage"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             Title="TaskList Page">
+    <ScrollView>
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <SearchBar WidthRequest="250" Margin="5" VerticalOptions="Center" Placeholder="Search" HorizontalOptions="Start" HeightRequest="40" Grid.Column="2"/>
+            <Button WidthRequest="200" HorizontalOptions="Start" Text="Task Activity" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+                <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+                <Button Command="{Binding LoadSavedActivitaz}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+                <Button HeightRequest="40" ImageSource="more.png"/>
+                <Button Clicked="Button_Clicked" HeightRequest="40" ImageSource="joyent.png" Text="Add New Task"/>
+            </HorizontalStackLayout>
+
+            <Grid RowSpacing="10" Grid.Row="1" Grid.Column="1" ColumnSpacing="10" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid ColumnSpacing="15" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="400"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Spacing="10" Grid.Row="0">
+                        <Label Text="Select Project" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Subtitle"/>
+                        <Picker SelectedItem="{Binding SelectedItem}" ItemsSource="{Binding Strings}" WidthRequest="300"/>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Grid.Row="1">
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0">
+                                <VerticalStackLayout>
+                                    <HorizontalStackLayout Grid.Column="0" Padding="3" Spacing="20">
+                                        <Label FontSize="Medium" Text="Activities" TextColor="DodgerBlue" FontAttributes="Bold"/>
+                                    </HorizontalStackLayout>
+                                    <CollectionView SelectionChanged="CollectionView_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding Acts}" MinimumHeightRequest="300" MinimumWidthRequest="240">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid x:DataType="model:ActAndTask" ColumnDefinitions="39,*" ColumnSpacing="3">
+                                                    <HorizontalStackLayout Spacing="3" Grid.Column="0">
+                                                        <Label Margin="5" VerticalTextAlignment="Center" Text="{Binding Code}"/>
+                                                        <Image Source="cred.png" WidthRequest="20" HeightRequest="20"/>
+                                                    </HorizontalStackLayout>
+                                                    <VerticalStackLayout Grid.Column="1">
+                                                        <HorizontalStackLayout>
+                                                            <Label FontAttributes="Bold" Text="{Binding MyACtivitiz}"/>
+                                                            <Label FontAttributes="Bold" Text="{Binding ActName}"/>
+                                                        </HorizontalStackLayout>
+                                                        <HorizontalStackLayout Spacing="10">
+                                                            <Label VerticalTextAlignment="Center" Text="Start: " FontAttributes="Italic"/>
+                                                            <Label VerticalTextAlignment="Center" HeightRequest="14" WidthRequest="100" Text="{Binding ActStartDate}" FontAttributes="Italic"/>
+                                                            <Label VerticalTextAlignment="Center" Text="End: " FontAttributes="Italic"/>
+                                                            <Label VerticalTextAlignment="Center" HeightRequest="14" WidthRequest="100" Text="{Binding ActEndDate}" FontAttributes="Italic"/>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                    
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </VerticalStackLayout>
+                            </Frame>
+                            <Frame Grid.Column="1">
+                                <VerticalStackLayout>
+                                    <HorizontalStackLayout Grid.Column="0" Padding="3" Spacing="20">
+                                        <Label FontSize="Medium" Text="Tasks" TextColor="DodgerBlue" FontAttributes="Bold"/>
+                                        <ImageButton BackgroundColor="Transparent" Clicked="Button_Clicked_1" Source="addnew.png" WidthRequest="100" HeightRequest="25"/>
+                                    </HorizontalStackLayout>
+                                    <CollectionView x:Name="TaskaList" SelectionChanged="TaskaList_SelectionChanged" SelectionMode="Single" MinimumHeightRequest="300" MinimumWidthRequest="240">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid x:DataType="model:TaskasList" ColumnDefinitions="39,*">
+                                                    <HorizontalStackLayout Grid.Column="0" Spacing="3">
+                                                        <Label Margin="5" VerticalTextAlignment="Center" Text="{Binding Code}"/>
+                                                        <Image Source="cgreen.png" WidthRequest="20" HeightRequest="20"/>
+                                                    </HorizontalStackLayout>
+                                                    <VerticalStackLayout Grid.Column="1">
+                                                        <Label FontAttributes="Bold" Text="{Binding Activitiz}"/>
+                                                        <HorizontalStackLayout Spacing="20">
+                                                            <Label VerticalTextAlignment="Center" Text="Start: " FontAttributes="Italic"/>
+                                                            <Label VerticalTextAlignment="Center" HeightRequest="14" WidthRequest="100" Text="{Binding TasStartDate}" FontAttributes="Italic"/>
+                                                            <Label VerticalTextAlignment="Center" Text="End: " FontAttributes="Italic"/>
+                                                            <Label VerticalTextAlignment="Center" HeightRequest="14" WidthRequest="100" Text="{Binding TasEndDate}" FontAttributes="Italic"/>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </VerticalStackLayout>
+                            </Frame>
+                            <Frame VerticalOptions="Start" Grid.Column="2" HeightRequest="100">
+                                <VerticalStackLayout>
+                                    <HorizontalStackLayout Grid.Column="0" Padding="3" Spacing="20">
+                                        <Label FontSize="Medium" Text="Create Subtask" TextColor="DodgerBlue" FontAttributes="Bold"/>
+                                        <ImageButton x:Name="btnDesc" Clicked="btnDesc_Clicked" Source="addnew.png" WidthRequest="25" HeightRequest="25"/>
+                                    </HorizontalStackLayout>
+                                    
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                    <Frame Margin="0,10,0,0" Grid.Row="2">
+                        <VerticalStackLayout BackgroundColor="WhiteSmoke">
+                            <Label FontSize="Medium" FontAttributes="Bold" TextColor="DodgerBlue" HorizontalTextAlignment="Center" Text="Detailed Task Breakdown"/>
+                            <Grid ColumnSpacing="2" BackgroundColor="LightGray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Margin="5,0,0,0" FontAttributes="Bold" Grid.Column="0" Text="id"/>
+                                <Label FontAttributes="Bold" Grid.Column="1" Text="Sub-Task"/>
+                                <Label FontAttributes="Bold" Grid.Column="2" Text="Description"/>
+                                <Label FontAttributes="Bold" Grid.Column="3" Text="Rd Section"/>
+                                <Label FontAttributes="Bold" Grid.Column="4" Text="Materials"/>
+                                <Label FontAttributes="Bold" Grid.Column="5" Text="Machines"/>
+                                <Label FontAttributes="Bold" Grid.Column="6" Text="Trucks"/>
+                                <Label FontAttributes="Bold" Grid.Column="7" Text="Casuals"/>
+                            </Grid>
+                            <CollectionView x:Name="Subtaskus" SelectionMode="Single" ItemsSource="{Binding Taskiz}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnSpacing="2" RowSpacing="2" x:DataType="model:Taskis">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="200"/>
+                                                <ColumnDefinition Width="200"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="150"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Margin="5,0,0,0"  Grid.Column="0" Text="{Binding Code}"/>
+                                            <Label  Grid.Column="1" Text="{Binding SubTaski}"/>
+                                            <Label  Grid.Column="2" Text="{Binding Description}"/>
+                                            <Label  Grid.Column="3" Text="{Binding RdSection}"/>
+                                            <Label  Grid.Column="4" Text="{Binding Materials}"/>
+                                            <Label  Grid.Column="5" Text="{Binding Machines}"/>
+                                            <Label  Grid.Column="6" Text="{Binding Trucks}"/>
+                                            <Label Margin="0,0,2,0"  Grid.Column="7" Text="{Binding Casuals}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </Grid>
+
+
+            </Grid>
+            <VerticalStackLayout>
+                
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

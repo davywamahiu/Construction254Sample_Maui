@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.ProjectsDS.ProjectList"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             Title="Projects List">
+    <ScrollView>
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Start" HeightRequest="50" Grid.Column="2"/>
+            <Button WidthRequest="200" HorizontalOptions="Start" Text="Project List" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+                <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+                <Button Command="{Binding LoadSavedContract}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+                <Button HeightRequest="40" ImageSource="more.png"/>
+                <Button Clicked="Button_Clicked" HeightRequest="40" ImageSource="joyent.png" Text="Add Project"/>
+            </HorizontalStackLayout>
+
+            <Grid Grid.Row="1" Grid.Column="1" ColumnSpacing="10" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Spacing="10"  Grid.Column="1" Grid.Row="0">
+                    <Label FontAttributes="Bold" Text="ProjectName"/>
+                    <Label  x:Name="txtName" Text="{Binding ProjectName}"/>
+                    <Label FontAttributes="Bold" Text="ProjectType"/>
+                    <Label x:Name="txtType" Text="{Binding ProjectType}"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Distance"/>
+                        <Label x:Name="txtDiistance" HorizontalOptions="End" Text="{Binding Distance}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Cost"/>
+                        <Label x:Name="txtCost" HorizontalOptions="End" Text="{Binding Cost}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Start"/>
+                        <Label HeightRequest="20" x:Name="txtStart" WidthRequest="100" HorizontalOptions="End"  Text="{Binding StartD}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" HorizontalTextAlignment="Start" Text="Completion"/>
+                        <Label HeightRequest="20" x:Name="txtEnd" WidthRequest="100" HorizontalTextAlignment="End" Text="{Binding ExpectedD}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" HorizontalTextAlignment="Start" Text="Resident"/>
+                        <Label x:Name="txtResident" HorizontalTextAlignment="End" Text="{Binding Resident}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" HorizontalTextAlignment="Start" Text="Engineer"/>
+                        <Label x:Name="txtEngineer" HorizontalTextAlignment="End" Text="{Binding Engineer}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" HorizontalTextAlignment="Start" Text="Surveyor"/>
+                        <Label x:Name="txtSurveyor" HorizontalTextAlignment="End" Text="{Binding Surveyor}"/>
+                    </HorizontalStackLayout>
+                    <Button x:Name="btnList" BorderColor="Brown" Clicked="Button_Clicked_1" BackgroundColor="WhiteSmoke" TextColor="Black"  Text="General BOQ"/>
+                    <Button x:Name="btnMaterial" BorderColor="Brown" Clicked="Button_Clicked_2" BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Bill of Materials"/>
+                    <Button x:Name="btnLabor" BorderColor="Brown" Clicked="Button_Clicked_3" BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Bill of Labour"/>
+                </VerticalStackLayout>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <VerticalStackLayout Grid.Row="0">
+                        <Frame>
+                            <VerticalStackLayout BackgroundColor="WhiteSmoke" Spacing="5">
+                                <Label Text="All Projects Listing" TextColor="DodgerBlue" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Subtitle"/>
+                                <Grid BackgroundColor="LightGray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="130"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="0"/>
+                                        <ColumnDefinition Width="0"/>
+                                        <ColumnDefinition Width="0"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="#" Grid.Row="0" Grid.Column="1"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="ProjectName"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text="ProjectType"/>
+                                    <Label Grid.Row="0" Grid.Column="4" Text="Distance"/>
+                                    <Label Grid.Row="0" Grid.Column="5" Text="Cost"/>
+                                    <Label Grid.Row="0" Grid.Column="6" Text="StartD"/>
+                                    <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="7" Text="ExpectedD"/>
+                                    <Label IsVisible="False" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="8" Text="Resident"/>
+                                    <Label IsVisible="False" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="9" Text="Engineer"/>
+                                    <Label IsVisible="False" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="10" Text="Surveyor"/>
+                                </Grid>
+                                <RefreshView HeightRequest="300" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                                    <CollectionView SelectionChanged="CollectionView_SelectionChanged"  SelectionMode="Single" MinimumHeightRequest="200" ItemsSource="{Binding Models}" MaximumHeightRequest="300" >
+                                        
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid  x:DataType="model:ContractsModel">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30"/>
+                                                        <ColumnDefinition Width="40"/>
+                                                        <ColumnDefinition Width="250"/>
+                                                        <ColumnDefinition Width="130"/>
+                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="110"/>
+                                                        <ColumnDefinition Width="90"/>
+                                                        <ColumnDefinition Width="90"/>
+                                                        <ColumnDefinition Width="0"/>
+                                                        <ColumnDefinition Width="0"/>
+                                                        <ColumnDefinition Width="0"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="20"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>
+                                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ProjectName}"/>
+                                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding ProjectType}"/>
+                                                    <Label Grid.Row="0" Grid.Column="4" Text="{Binding Distance}"/>
+                                                    <!--<Label Grid.Row="0" Grid.Column="5" Text="{Binding Cost, StringFormat={}{0:C0}.00}"/>-->
+                                                    <Label Grid.Row="0" Grid.Column="5" Text="{Binding Cost}"/>
+                                                    <Label Grid.Row="0" Grid.Column="6" Text="{Binding StartD}"/>
+                                                    <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="7" Text="{Binding ExpectedD}"/>
+                                                    <Label IsVisible="False" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="8" Text="{Binding Resident}"/>
+                                                    <Label IsVisible="False" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="9" Text="{Binding Engineer}"/>
+                                                    <Label IsVisible="False" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="10" Text="{Binding Surveyor}"/>
+                                                </Grid>
+                                                
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </RefreshView>
+                            </VerticalStackLayout>
+                        </Frame>
+                        <HorizontalStackLayout HorizontalOptions="Start" Spacing="20">
+                            <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Prev"/>
+                            <Label VerticalOptions="Center" Text="20"/>
+                            <Label VerticalOptions="Center" Text="25"/>
+                            <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Next"/>
+                        </HorizontalStackLayout>
+                        <Frame>
+                            <HorizontalStackLayout Spacing="40">
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="Projects" FontAttributes="Bold"/>
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding AllProjects}"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="Active Projects" FontAttributes="Bold"/>
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding ActiveProjectz}"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="Completed Projects" FontAttributes="Bold"/>
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding CompProjects}"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="Projects Pending Start" FontAttributes="Bold"/>
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding PendProjects}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

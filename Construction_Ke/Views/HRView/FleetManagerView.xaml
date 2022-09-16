@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.HRView.FleetManagerView"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel.EmployeeViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             Title="Fleet Manager">
+    <ScrollView>
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Start" HeightRequest="50" Grid.Column="2"/>
+            <Button WidthRequest="200" HorizontalOptions="Start" Text="Fleet Manager" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+                <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+                <Button Command="{Binding LoadOnSaveAssignment}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+                <Button HeightRequest="40" ImageSource="more.png"/>
+                <Button Clicked="Button_Clicked" HeightRequest="40" ImageSource="joyent.png" Text="Add Assignment"/>
+            </HorizontalStackLayout>
+
+            <Grid Grid.Row="1" Grid.Column="1" ColumnSpacing="10" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" FontSize="Body" Text="Driver Name:"></Label>
+                        <Label x:Name="txtDriver" FontSize="Body" Text=""></Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Pin"/>
+                        <Label x:Name="epin"  Text="{Binding EPin}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="ID"/>
+                        <Label x:Name="natid" Text="{Binding NatID}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Phone"/>
+                        <Label x:Name="phone" Text="{Binding Phone}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Vehicle"/>
+                        <Label x:Name="vtype" Text="{Binding VehiclType}"/>
+                    </HorizontalStackLayout>
+                    <Picker x:Name="plate" Title="No. Plate" WidthRequest="240"/>
+                    <Picker x:Name="asss" Title="Assigned" WidthRequest="240"/>
+                    <Picker x:Name="projectz" Title="Project" WidthRequest="240"/>
+                    <Picker x:Name="estatus" Title="Status" WidthRequest="240"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                        <Button x:Name="btnUpdate" TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="120" Text="Update"/>
+                        <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Margin="20,0,0,0" HorizontalOptions="Start" VerticalOptions="Center" Spacing="2">
+                        <Button BorderWidth="2" BorderColor="DodgerBlue" BackgroundColor="WhiteSmoke" TextColor="Black" WidthRequest="100" Text="Fleet" HeightRequest="40"/>
+                        <Button BorderWidth="2" BorderColor="Gray" BackgroundColor="WhiteSmoke" TextColor="Black" WidthRequest="100" Text="Free" HeightRequest="40"/>
+                        <Button BorderWidth="2" BorderColor="Gray" BackgroundColor="WhiteSmoke" TextColor="Black" WidthRequest="100" Text="Spares" HeightRequest="40"/>
+                        <Button BorderWidth="2" BorderColor="Gray" BackgroundColor="WhiteSmoke" TextColor="Black" WidthRequest="100" Text="Issues" HeightRequest="40"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="65"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="#" Grid.Row="0" Grid.Column="1"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Vehicle"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text="No. Plate"/>
+                            <Label Grid.Row="0" Grid.Column="4" Text="Driver"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text="Driver RegNo."/>
+                            <Label Grid.Row="0" Grid.Column="6" Text="Assigned"/>
+                            <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="7" Text="Project"/>
+                            <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="8" Text="Insurance"/>
+                            <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="9" Text="Status"/>
+                            <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="10" Text="Condition"/>
+                        </Grid>
+                    </HorizontalStackLayout>
+                    
+                        <VerticalStackLayout Grid.Row="2">
+                        <Frame Margin="20,0,0,0">
+                            <RefreshView HeightRequest="300" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                                <CollectionView SelectionChanged="CollectionView_SelectionChanged"  SelectionMode="Single" MinimumHeightRequest="200" ItemsSource="{Binding Fleet}" MaximumHeightRequest="300" >
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid  x:DataType="model:FleetAssigned">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                    <ColumnDefinition Width="70"/>
+                                                    <ColumnDefinition Width="160"/>
+                                                    <ColumnDefinition Width="70"/>
+                                                    <ColumnDefinition Width="70"/>
+                                                    <ColumnDefinition Width="70"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="20"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>
+                                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding VehiclType}"/>
+                                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Plate}"/>
+                                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding FullName}"/>
+                                                <Label Grid.Row="0" Grid.Column="5" Text="{Binding EPin}"/>
+                                                <Label Grid.Row="0" Grid.Column="6" Text="{Binding Assigneed}"/>
+                                                <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="7" Text="{Binding Projectz}"/>
+                                                <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="8" Text="{Binding Insurance}"/>
+                                                <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="9" Text="{Binding Statuss}"/>
+                                                <Label HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="10" Text="{Binding Condition}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </RefreshView>
+                            </Frame>
+                        <HorizontalStackLayout Margin="20,0,0,0" HorizontalOptions="Start" Spacing="20">
+                                <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Prev"/>
+                                <Label VerticalOptions="Center" Text="20"/>
+                                <Label VerticalOptions="Center" Text="25"/>
+                                <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Next"/>
+                            </HorizontalStackLayout>
+
+
+                        </VerticalStackLayout>
+                        <Frame Padding="10" Margin="20,0,0,0" Grid.Row="3">
+                        <HorizontalStackLayout Spacing="20">
+                            <VerticalStackLayout>
+                                <Label Text="Drivers assigned" FontAttributes="Bold"/>
+                                <Label Text="{Binding DriverAsigned, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label Text="Non-assigned Drivers" FontAttributes="Bold"/>
+                                <Label Text="{Binding DriverNonAssigneed, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label Text="Operators assigned" FontAttributes="Bold"/>
+                                <Label Text="{Binding OperatorAssigneed}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label Text="Non-assigned Operators" FontAttributes="Bold"/>
+                                <Label Text="{Binding OperatorNonAssigneed}"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

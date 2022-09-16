@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.HRView.NewEmployee"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel.EmployeeViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             Title="New Employee">
+    <ScrollView>
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Start" HeightRequest="50" Grid.Column="2"/>
+            <Button WidthRequest="200" HorizontalOptions="Start" Text="Employee Manager" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+                <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+                <Button Command="{Binding LoadSavedEmployee}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+                <Button HeightRequest="40" ImageSource="more.png"/>
+                <Button Clicked="Button_Clicked"  HeightRequest="40" ImageSource="joyent.png" Text="Add Employee"/>
+            </HorizontalStackLayout>
+
+            <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Spacing="10" Grid.Column="1">
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Edit Employee" HorizontalOptions="Center"></Label>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" Text="Pin" />
+                        <Label x:Name="epin" Text="{Binding EPin}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold"  Text="ID" />
+                        <Label x:Name="natid" Text="{Binding NatID}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold"  Text="Phone" />
+                        <Label x:Name="phone" Text="{Binding Phone}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold"  Text="KRAPin" />
+                        <Label x:Name="krapin" Text="{Binding KRAPin}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold"  Text="Salary" />
+                        <Label x:Name="salary" Text="{Binding Salary}" />
+                    </HorizontalStackLayout>
+
+                    <Picker x:Name="role" SelectedItem="{Binding Role}" WidthRequest="240" Title="Role"/>
+                    <Picker x:Name="profession" SelectedItem="{Binding Profession}" WidthRequest="240" Title="Profession"/>
+                    <Picker x:Name="supervisor" SelectedItem="{Binding Supervisor}" Title="Supervisor"  WidthRequest="240"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                        <Button  TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="120" Text="Update"/>
+                        <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="#" Grid.Row="0" Grid.Column="1"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="PIN"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text="KRAPin"/>
+                            <Label Grid.Row="0" Grid.Column="4" Text="Phone"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text="NatID"/>
+                            <Label Grid.Row="0" Grid.Column="6" Text="Profession"/>
+                            <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="7" Text="Salary"/>
+                            <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="8" Text="Surname"/>
+                            <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="9" Text="First Name"/>
+                        </Grid>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Grid.Row="1">
+                        <Frame>
+                            <RefreshView HeightRequest="300" x:DataType="local:NewEmpViewModel" Command="{Binding LoadSavedEmployee}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                                <CollectionView SelectionChanged="CollectionView_SelectionChanged"  SelectionMode="Single" MinimumHeightRequest="200" MaximumHeightRequest="300" ItemsSource="{Binding Employees}">
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="150"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="20"/>
+                                                </Grid.RowDefinitions>
+                                                <!--<CheckBox Color="DodgerBlue" Grid.Column="0" />-->
+                                                <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>
+                                                <Label Grid.Row="0" Grid.Column="2" TextTransform="Uppercase" Text="{Binding EPin}"/>
+                                                <Label Grid.Row="0" Grid.Column="3" TextTransform="Uppercase"  Text="{Binding KRAPin}"/>
+                                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Phone}"/>
+                                                <Label Grid.Row="0" Grid.Column="5" Text="{Binding NatID}"/>
+                                                <Label Grid.Row="0" Grid.Column="6" Text="{Binding Profession}"/>
+                                                <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="7" Text="{Binding Salary}"/>
+                                                <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="8" Text="{Binding Surname}"/>
+                                                <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="9" Text="{Binding FirstName}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </RefreshView>
+                        </Frame>
+                        <HorizontalStackLayout HorizontalOptions="Start" Spacing="20">
+                            <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Prev"/>
+                            <Label VerticalOptions="Center" Text="20"/>
+                            <Label VerticalOptions="Center" Text="25"/>
+                            <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Next"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    <Frame Padding="10" Margin="20,0,0,0" Grid.Row="2">
+                        <HorizontalStackLayout Spacing="20">
+                            <VerticalStackLayout>
+                                <Label Text="Total" FontAttributes="Bold"/>
+                                <Label Text="{Binding Totals, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label Text="Drivers" FontAttributes="Bold"/>
+                                <Label Text="{Binding Drivers, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label Text="Operators" FontAttributes="Bold"/>
+                                <Label Text="{Binding Operatas, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout>
+                                <Label Text="Engineers" FontAttributes="Bold"/>
+                                <Label Text="{Binding Engineers, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

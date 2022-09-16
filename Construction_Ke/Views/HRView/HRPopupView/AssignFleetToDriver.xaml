@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Construction_Ke.Views.HRView.HRPopupView.AssignFleetToDriver">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" BackgroundColor="WhiteSmoke"  WidthRequest="350">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Add New Assignment!" />
+
+                <Button WidthRequest="50" BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                     Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+            <Picker x:Name="ename" SelectedIndexChanged="ename_SelectedIndexChanged" WidthRequest="240" SelectedItem="{Binding FullName}" Title="Contact"/>
+            <Label x:Name="epin"  Text="{Binding EPin, Mode=TwoWay}" WidthRequest="240"/>
+            <Label x:Name="natid" Text="{Binding NatID, Mode=TwoWay}" WidthRequest="240"/>
+            <Label IsVisible="false" x:Name="fname"  Text="{Binding FirstName, Mode=TwoWay}" WidthRequest="240"/>
+            <Label IsVisible="false" x:Name="sname" Text="{Binding Surname, Mode=TwoWay}" WidthRequest="240"/>
+            <Label x:Name="phone" Text="{Binding Phone}" WidthRequest="240"/>
+            <Picker x:Name="plate" WidthRequest="240" SelectedItem="{Binding Plate}" Title="Number Plate"/>
+            <Picker x:Name="projects" WidthRequest="240" SelectedItem="{Binding Projectz}" Title="Projects"/>
+            <Picker x:Name="estatus" WidthRequest="240" SelectedItem="{Binding Statuss}" Title="Status"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Command="{Binding OnSaveAssignment}" TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="100" Text="Save"/>
+                <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

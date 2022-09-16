@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.BackgroundColor="Gray"
+             x:Class="Construction_Ke.Views.ProjectsDS.ProjePopupz.AddBoqDescription">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="WhiteSmoke" Spacing="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <HorizontalStackLayout Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" Spacing="100">
+                    <Label HorizontalOptions="Start" Text="Bill of Quantities Detailed!" />
+                    <ImageButton Command="{Binding LoadSaveBoqList}" Source="reset.png" WidthRequest="30" HeightRequest="30"/>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+                </HorizontalStackLayout>
+                <VerticalStackLayout Spacing="10" Grid.Row="1" Grid.Column="0">
+                    <Entry Text="{Binding MatSerial}" Placeholder="Serial" WidthRequest="240"/>
+                    <Editor HeightRequest="100" Text="{Binding Materials}" Placeholder="Description" WidthRequest="240"/>
+                    <Entry Text="{Binding Uniti}" Placeholder="Units" WidthRequest="240"/>
+                    <Entry Text="{Binding Rati}" Placeholder="Unit Bid Rate" WidthRequest="240"/>
+                    <Entry IsEnabled="False" x:Name="txtProject" Text="{Binding ProjectName}" Placeholder="Unit" WidthRequest="240"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <Button Command="{Binding SaveBoqList}" TextColor="White" BackgroundColor="LightGreen" Text="Save" WidthRequest="100" HeightRequest="40"/>
+                        <Button TextColor="White" HeightRequest="40" WidthRequest="140" Text="Clear" BackgroundColor="Crimson" CornerRadius="5" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                    <Frame Margin="0,10,0,0" Grid.Row="2">
+                        <VerticalStackLayout BackgroundColor="WhiteSmoke">
+                            <Label FontSize="Medium" FontAttributes="Bold" TextColor="DodgerBlue" HorizontalTextAlignment="Center" Text="Bill of Material Breakdown"/>
+                            <Grid ColumnSpacing="2" BackgroundColor="LightGray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="280"/>
+                                    <ColumnDefinition Width="85"/>
+                                    <ColumnDefinition Width="65"/>
+                                    <ColumnDefinition Width="65"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Margin="5,0,0,0" FontAttributes="Bold" Grid.Column="0" Text="S/N"/>
+                                <Label FontAttributes="Bold" Grid.Column="1" Text="Materials"/>
+                                <Label FontAttributes="Bold" Grid.Column="2" Text="Quantity"/>
+                                <Label FontAttributes="Bold" Grid.Column="3" Text="Rate"/>
+                                <Label IsVisible="false" FontAttributes="Bold" Grid.Column="4" Text="project"/>
+                            </Grid>
+                            <CollectionView x:Name="Subtaskus" SelectionMode="Single" ItemsSource="{Binding MaterialModelz}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnSpacing="2" RowSpacing="2" x:DataType="model:MaterialModel">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="135"/>
+                                                <ColumnDefinition Width="280"/>
+                                                <ColumnDefinition Width="85"/>
+                                                <ColumnDefinition Width="65"/>
+                                                <ColumnDefinition Width="65"/>
+                                                <ColumnDefinition Width="75"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Margin="5,0,0,0"  Grid.Column="0" Text="{Binding MatSerial}"/>
+                                            <Label  Grid.Column="1" Text="{Binding Material}"/>
+                                            <Label  Grid.Column="2" Text="{Binding Uniti}"/>
+                                            <Label  Grid.Column="3" Text="{Binding Rati}"/>
+                                            <Label IsVisible="false" Grid.Column="4" Text="{Binding Projectz}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+            </Grid>
+            
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

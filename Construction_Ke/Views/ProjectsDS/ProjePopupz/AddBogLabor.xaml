@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             Shell.BackgroundColor="Gray"
+             x:Class="Construction_Ke.Views.ProjectsDS.ProjePopupz.AddBogLabor">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="WhiteSmoke" Spacing="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <HorizontalStackLayout Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" Spacing="100">
+                    <Label HorizontalOptions="Start" Text="Bill of Labor!" />
+                    <ImageButton Command="{Binding LoadSaveMaterial}" Source="reset.png" WidthRequest="30" HeightRequest="30"/>
+                    <Button BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+                </HorizontalStackLayout>
+                <VerticalStackLayout Spacing="10" Grid.Row="1" Grid.Column="0">
+                    <Entry Text="{Binding MatSerial}" Placeholder="Serial No" WidthRequest="240"/>
+                    <Picker SelectedIndexChanged="labor_SelectedIndexChanged" x:Name="labor"  WidthRequest="240" Title="Select Casuals"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <CheckBox x:Name="btnlabour" CheckedChanged="CheckBox_CheckedChanged"/>
+                        <Label Text="Custom labour item" FontAttributes="Italic"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center" x:Name="txtlabour" IsVisible="false" Spacing="10">
+                        <Entry x:Name="laborors" Text="{Binding Materials}" Placeholder="Labour Item" WidthRequest="220"/>
+                        <ImageButton Clicked="ImageButton_Clicked"  Source="reset.png" WidthRequest="30" HeightRequest="30"/>
+                    </HorizontalStackLayout>
+                    <Entry Text="{Binding Quantity}" Placeholder="Quantity" WidthRequest="240"/>
+                    <Entry Text="{Binding Uniti}" Placeholder="Unit" WidthRequest="240"/>
+                    <Entry Text="{Binding Rati}" Placeholder="Rate per unit" WidthRequest="240"/>
+                    <Entry Text="{Binding Amount}" Placeholder="Total Amount" WidthRequest="240"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <Button Command="{Binding SaveMaterial}" TextColor="White" BackgroundColor="LightGreen" Text="Save" WidthRequest="100" HeightRequest="40"/>
+                        <Button TextColor="White" HeightRequest="40" WidthRequest="140" Text="Clear" BackgroundColor="Crimson" CornerRadius="5" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                    <Frame Margin="0,10,0,0" Grid.Row="2">
+                        <VerticalStackLayout BackgroundColor="WhiteSmoke">
+                            <Label FontSize="Medium" FontAttributes="Bold" TextColor="DodgerBlue" HorizontalTextAlignment="Center" Text="Bill of Material Breakdown"/>
+                            <Grid ColumnSpacing="2" BackgroundColor="LightGray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="85"/>
+                                    <ColumnDefinition Width="65"/>
+                                    <ColumnDefinition Width="65"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Margin="5,0,0,0" FontAttributes="Bold" Grid.Column="0" Text="S/N"/>
+                                <Label FontAttributes="Bold" Grid.Column="1" Text="Materials"/>
+                                <Label FontAttributes="Bold" Grid.Column="2" Text="Quantity"/>
+                                <Label FontAttributes="Bold" Grid.Column="3" Text="Unit"/>
+                                <Label FontAttributes="Bold" Grid.Column="4" Text="Rate"/>
+                                <Label FontAttributes="Bold" Grid.Column="5" Text="Amount"/>
+                            </Grid>
+                            <CollectionView x:Name="Subtaskus" SelectionMode="Single" ItemsSource="{Binding MaterialModels}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnSpacing="2" RowSpacing="2" x:DataType="model:MaterialModel">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="135"/>
+                                                <ColumnDefinition Width="140"/>
+                                                <ColumnDefinition Width="85"/>
+                                                <ColumnDefinition Width="65"/>
+                                                <ColumnDefinition Width="65"/>
+                                                <ColumnDefinition Width="75"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Margin="5,0,0,0"  Grid.Column="0" Text="{Binding MatSerial}"/>
+                                            <Label  Grid.Column="1" Text="{Binding Material}"/>
+                                            <Label  Grid.Column="2" Text="{Binding Quantity}"/>
+                                            <Label  Grid.Column="3" Text="{Binding Uniti}"/>
+                                            <Label  Grid.Column="4" Text="{Binding Rati}"/>
+                                            <Label  Grid.Column="5" Text="{Binding Amount}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+            </Grid>
+            
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

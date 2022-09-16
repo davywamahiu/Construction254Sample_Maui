@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.AccountView.AccReports"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             Title="AccReports">
+    <VerticalStackLayout HorizontalOptions="Center">
+        <Label HorizontalTextAlignment="Center" Text="View Reports" FontSize="Title"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="Transparent"
+               BorderColor="DarkGray"
+               HasShadow="True"
+                   Padding="20"
+               Grid.Column="1" 
+               HorizontalOptions="Fill">
+                <RefreshView HeightRequest="300" x:DataType="local:ListWeightViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView SelectionMode="Single" MinimumHeightRequest="200" MaximumHeightRequest="300" ItemsSource="{Binding Items}">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:DataType="model:FirstWeight">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <CheckBox Grid.Column="0" />
+                                    <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Ticket}"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding Plate}"/>
+                                    <Label Grid.Row="0" Grid.Column="4" Text="{Binding Driver}"/>
+                                    <Label Grid.Row="0" Grid.Column="5" Text="{Binding Phone}"/>
+                                    <Label Grid.Row="0" Grid.Column="6" Text="{Binding Material}"/>
+                                    <Label Grid.Row="0" Grid.Column="7" Text="{Binding Amount}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </Frame>
+            <VerticalStackLayout Spacing="10" Grid.Column="2" WidthRequest="350">
+                <Label HorizontalTextAlignment="Center" Text="Create a new Report"/>
+                <Entry Placeholder="Report ID" WidthRequest="240"/>
+                <Entry Placeholder="Report Title" WidthRequest="240"/>
+                <Entry Placeholder="Report Name" WidthRequest="240"/>
+                <HorizontalStackLayout Spacing="30" Padding="20">
+                    <Button FontSize="Medium" WidthRequest="100" Text="Save"/>
+                    <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+
+
+
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Padding="2" HeightRequest="110" Spacing="40">
+            <Button WidthRequest="150" Command="{Binding .}"  ImageSource="canc.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+            <Button WidthRequest="150" Command="{Binding .}" ImageSource="addnew.png" CornerRadius="5" SemanticProperties.HeadingLevel="Level3" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

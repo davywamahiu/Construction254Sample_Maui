@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.AccountView.FinanceBooks"
+             Title="Finance Book">
+    <Grid ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Center" HeightRequest="50" Grid.Column="2"/>
+        <Button WidthRequest="200" HorizontalOptions="Start" Text="Finance Book" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+        <HorizontalStackLayout Spacing="10" Grid.Row="0" Grid.Column="3">
+            <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+            <Button HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+            <Button HeightRequest="40" ImageSource="more.png"/>
+            <Button HeightRequest="40" ImageSource="joyent.png" Text="Add Company"/>
+        </HorizontalStackLayout>
+
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Spacing="10" Grid.Column="1">
+                <Label HorizontalTextAlignment="Center" Text="Filter"/>
+                <Picker WidthRequest="200" Title="Assigned To"/>
+                <Picker WidthRequest="200" Title="Assigned To"/>
+                <Picker WidthRequest="200" Title="Assigned To"/>
+                <Entry WidthRequest="200" Placeholder="New Filter Name."/>
+            </VerticalStackLayout>
+            <Frame HorizontalOptions="Fill" Grid.Column="2">
+                <VerticalStackLayout>
+                    <ScrollView Grid.Column="2">
+                        <CollectionView MinimumHeightRequest="300" MinimumWidthRequest="300">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </ScrollView>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <Button Text="Prev"/>
+                        <Label VerticalOptions="Center" Text="20"/>
+                        <Label VerticalOptions="Center" Text="25"/>
+                        <Button Text="Next"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+
+        </Grid>
+    </Grid>
+</ContentPage>

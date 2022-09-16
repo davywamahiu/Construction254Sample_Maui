@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.AssetsView.VehicleManager"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel.AssetsViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             Title="Vehicle Manager">
+    <ScrollView>
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Start" HeightRequest="50" Grid.Column="2"/>
+            <Button WidthRequest="200" HorizontalOptions="Start" Text="Vehicle Manager" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+                <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+                <Button Command="{Binding LoadSavedVehicles}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+                <Button HeightRequest="40" ImageSource="more.png"/>
+                <Button Clicked="Button_Clicked" HeightRequest="40" ImageSource="joyent.png" Text="Add Vehicle"/>
+            </HorizontalStackLayout>
+
+            <Grid Grid.Row="1" ColumnSpacing="10" Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Spacing="10" Grid.Column="1">
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Select A Vehicle to  edit" HorizontalOptions="Center"></Label>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="ID" FontAttributes="Bold"/>
+                        <Label x:Name="vid" HorizontalOptions="Center" Text="{Binding VId}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="No. Plate" FontAttributes="Bold"/>
+                        <Label x:Name="plate" HorizontalOptions="Center" Text="{Binding Plate}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Cost" FontAttributes="Bold"/>
+                        <Label x:Name="cost" HorizontalOptions="Center" Text="{Binding Cost}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Year" FontAttributes="Bold"/>
+                        <Label x:Name="yearz" HorizontalOptions="Center" Text="{Binding Yearz}"/>
+                    </HorizontalStackLayout>
+                    <Picker x:Name="logbook" ItemsSource="{Binding Logbook}" WidthRequest="240" Title="Logbook"/>
+                    <Picker x:Name="condt" ItemsSource="{Binding Condition}" WidthRequest="240" Title="Condition"/>
+                    <Picker x:Name="vtyp" ItemsSource="{Binding VehiclType}" Title="Machinery Type"  WidthRequest="240"/>
+                    <Picker x:Name="useds" ItemsSource="{Binding UsedStatus}"  WidthRequest="240" Title="In Use"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                        <Button Command="{Binding SaveVehicle}"  TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="120" Text="Update"/>
+                        <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <!--<Label Text="Sel" Grid.Column="0"/>-->
+                            <Label Text="#" Grid.Row="0" Grid.Column="1"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Vehicle"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text="ChasisNo"/>
+                            <Label Grid.Row="0" Grid.Column="4" Text="EngineNo"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text="Condition"/>
+                            <Label Grid.Row="0" Grid.Column="6" Text="Logbook"/>
+                            <Label HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="7" Text="Cost"/>
+                            <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="8" Text="Status"/>
+                            <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="9" Text="Since"/>
+                        </Grid>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Grid.Row="1">
+                        <Frame>
+                            <RefreshView HeightRequest="300" x:DataType="local:AssetViewModel" Command="{Binding LoadSavedVehicles}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                                <CollectionView SelectionChanged="CollectionView_SelectionChanged" SelectionMode="Single" MinimumHeightRequest="200" MaximumHeightRequest="300" ItemsSource="{Binding Vehicles}">
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid  x:DataType="model:RobenVehicles">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="140"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                    <ColumnDefinition Width="60"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="20"/>
+                                                </Grid.RowDefinitions>
+                                                <!--<CheckBox Color="DodgerBlue" Grid.Column="0" />-->
+                                                <Label Text="{Binding VId}" Grid.Row="0" Grid.Column="1"/>
+                                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding VehiclType}"/>
+                                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding ChasisNo}"/>
+                                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding EngineNo}"/>
+                                                <Label Grid.Row="0" Grid.Column="5" Text="{Binding Condition}"/>
+                                                <Label Grid.Row="0" Grid.Column="6" Text="{Binding Logbook}"/>
+                                                <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="7" Text="{Binding Cost}"/>
+                                                <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="8" Text="{Binding UsedStatus}"/>
+                                                <Label HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="9" Text="{Binding Yearz}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </RefreshView>
+                        </Frame>
+                        <HorizontalStackLayout HorizontalOptions="Start" Spacing="20">
+                            <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Prev"/>
+                            <Label VerticalOptions="Center" Text="20"/>
+                            <Label VerticalOptions="Center" Text="25"/>
+                            <Button BackgroundColor="WhiteSmoke" TextColor="Black"  Text="Next"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

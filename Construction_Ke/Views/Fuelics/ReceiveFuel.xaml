@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.Fuelics.ReceiveFuel"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel.FuelViewModels"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             Title="Receive Fuel">
+    <ScrollView>
+        
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Start" HeightRequest="50" Grid.Column="2"/>
+            <Button WidthRequest="200" HorizontalOptions="Start" Text="Receive Fuel" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+                <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+                <Button Command="{Binding LoadReFuelCommand}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+                <Button HeightRequest="40" ImageSource="more.png"/>
+                <Button Clicked="Button_Clicked"  HeightRequest="40" ImageSource="joyent.png" Text="Add Supplier"/>
+            </HorizontalStackLayout>
+            <Grid Grid.Row="1" Grid.Column="1" ColumnSpacing="10" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <VerticalStackLayout Spacing="10" Grid.Column="1">
+                    <Label HorizontalOptions="Center">Please Fill all Details</Label>
+                    <Entry Text="{Binding VehicleId, Mode=TwoWay}" WidthRequest="240" Placeholder="Vehicle ID" Keyboard="Numeric"/>
+                    <Picker x:Name="plate" SelectedItem="{Binding NumberPlate, Mode=TwoWay}" WidthRequest="240" Title="Number Plate"/>
+                    <Picker x:Name="supplier" SelectedItem="{Binding Supplier, Mode=TwoWay}" WidthRequest="240" Title="Supplier"/>
+                    <Picker SelectedIndexChanged="driver_SelectedIndexChanged" x:Name="driver" SelectedItem="{Binding Driver, Mode=TwoWay}" WidthRequest="240" Title="Driver"/>
+                    <Entry x:Name="sphone" Text="{Binding SupplierPhone, Mode=TwoWay}" WidthRequest="240"/>
+                    <Picker SelectedItem="{Binding FuelType, Mode=TwoWay}" x:Name="FuelType" Title="Fuel Type" WidthRequest="240"/>
+                    <Entry Text="{Binding SuppliedLitters, Mode=TwoWay}" WidthRequest="240" Placeholder="Quantity in Ltrs" Keyboard="Numeric"/>
+                    <HorizontalStackLayout Spacing="20">
+                        <DatePicker Date="{Binding RefuelDate}"/>
+                        <Entry Text="{Binding SupplyTime, Mode=TwoWay}" WidthRequest="140" Placeholder="Time of arrival" Keyboard="Default"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30" Padding="10">
+                        <Button Command="{Binding SaveCommand1}" FontSize="Medium" WidthRequest="100" Text="Save"/>
+                        <Button Command="{Binding CancelCommand1}" BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="20"/><RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Margin="20,0,0,0" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="90"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="#" Grid.Row="0" Grid.Column="1"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="VId"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text="Supplier"/>
+                            <Label Grid.Row="0" Grid.Column="4" Text="Driver"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text="Phone"/>
+                            <Label Grid.Row="0" Grid.Column="6" Text="Fuel"/>
+                            <Label Grid.Row="0" Grid.Column="7" Text="Litters"/>
+                            <Label Grid.Row="0" Grid.Column="8" Text="Date"/>
+                            <Label Grid.Row="0" Grid.Column="9" Text="Time"/>
+                        </Grid>
+                    </HorizontalStackLayout>
+                    <VerticalStackLayout Margin="20,0,0,0" Grid.Row="1">
+                        <Frame>
+                        <CollectionView SelectionMode="Single" x:Name="fuelcol" ItemsSource="{Binding ReFuel}" MinimumHeightRequest="300" MaximumHeightRequest="450">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid x:DataType="model:RecieveFuelModel">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="140"/>
+                                            <ColumnDefinition Width="140"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="120"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="90"/>
+                                            </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>
+                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding VehicleId}"/>
+                                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Supplier}"/>
+                                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding Driver}"/>
+                                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding SupplierPhone}"/>
+                                        <Label Grid.Row="0" Grid.Column="6" Text="{Binding FuelType}"/>
+                                        <Label Grid.Row="0" Grid.Column="7" Text="{Binding SuppliedLitters}"/>
+                                        <Label Grid.Row="0" Grid.Column="8" Text="{Binding SupplyDate}"/>
+                                        <Label Grid.Row="0" Grid.Column="9" Text="{Binding SupplyTime}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        </Frame>
+                    </VerticalStackLayout>
+                    <HorizontalStackLayout Margin="40,0,0,0" Grid.Row="2" Spacing="20">
+                        <RadioButton Content="Supplier Name"/>
+                        <RadioButton Content="Driver Name"/>
+                        <RadioButton Content="Telephone"/>
+                        <RadioButton Content="No. Plate"/>
+                        <RadioButton Content="Quantiy"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Margin="40,0,0,0" Spacing="40" Grid.Row="3">
+                        <ImageButton Command="{Binding LoadFuelCommand}" BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="broom.png"/>
+                        <ImageButton BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="canc.png"/>
+                        <ImageButton BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="igas_station.png"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Margin="40,0,0,0" Spacing="80" Grid.Row="4">
+                        <Label Text="    Refresh"/>
+                        <Label Text="Delete Item"/>
+                        <Label Text="View Reports"/>
+                    </HorizontalStackLayout>
+                    <Frame HeightRequest="100" Margin="40,0,0,0" Grid.Row="5">
+                        <HorizontalStackLayout Margin="40,0,0,0" Padding="10" Grid.Row="5" Spacing="50">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Available Diesel" FontAttributes="Bold"/>
+                                <Label Text="{Binding Diesel, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Available Super Unleaded" FontAttributes="Bold"/>
+                                <Label Text="{Binding Petrol, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Available Super" FontAttributes="Bold"/>
+                                <Label Text="{Binding Superpetrol, Mode=TwoWay}"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </Grid>
+
+                
+                
+                
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

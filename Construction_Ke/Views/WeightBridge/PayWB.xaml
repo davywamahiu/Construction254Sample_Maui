@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.WeightBridge.PayWB"
+             Shell.BackgroundColor="Gray"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" BackgroundColor="WhiteSmoke">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Confirm Customer Payment!" />
+                <Button BackgroundColor="DodgerBlue" Command="{Binding LoadWBSales}" HorizontalOptions="Center" ImageSource="refresh.png" HeightRequest="65" WidthRequest="75"/>
+                <Button TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+            <WebView x:Name="hide3" IsVisible="false" HeightRequest="4" Source="https://web.whatsapp.com/"/>
+            <!--<ContentPresenter Content="{Binding Viewer}"/>-->
+            <Grid x:Name="hide1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <!--<Label TextColor="DarkSlateGray" Text="#" Grid.Row="0" Grid.Column="0"/>-->
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="1" Text="Ticket"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="2" Text="Plate"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="3" Text="Driver"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="4" Text="Phone"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="5" Text="Material"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="6" Text="Rate"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="7" Text="Tonage"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="8" Text="Total"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="9" Text="InBank"/>
+                <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="10" Text="Balance"/>
+            </Grid>
+            <!--<Frame BackgroundColor="Transparent"
+               BorderColor="DarkGray"
+               HasShadow="True"
+               
+               Padding="20"
+               HorizontalOptions="Fill">-->
+            <Frame>
+                <RefreshView x:Name="hide2" HeightRequest="300" x:DataType="local:ListWeightViewModel" Command="{Binding LoadWBSales}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView x:Name="pay" SelectionChanged="CollectionView_SelectionChanged" HorizontalScrollBarVisibility="Default" BackgroundColor="White" SelectionMode="Single" MinimumHeightRequest="200" MaximumHeightRequest="300" ItemsSource="{Binding ConfirmPay}">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:DataType="model:FinalReading">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="35"/>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="130"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="1"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--<CheckBox Color="DodgerBlue" Grid.Column="0" />-->
+
+                                    <!--<Label TextColor="DarkSlateGray" Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>-->
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="1" Text="{Binding Ticket}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="2" Text="{Binding Plate}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="3" Text="{Binding Driver}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="4" Text="{Binding Phone}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="5" Text="{Binding Material}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="6" Text="{Binding TonageRate}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="7" Text="{Binding Tonage}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="8" Text="{Binding TotalAmount}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="9" Text="{Binding InBank}"/>
+                                    <Label TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="10" Text="{Binding Balanc}"/>
+                                    <Label IsVisible="false" TextColor="DarkSlateGray"  Grid.Row="0" Grid.Column="10" Text="{Binding Code}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </Frame>
+            <!--</Frame>-->
+            <ProgressBar Margin="10" WidthRequest="800" HeightRequest="5" IsVisible="true" ProgressColor="LightGreen" x:Name="indicato"/>
+
+            <HorizontalStackLayout x:Name="hide4" HorizontalOptions="Center" Padding="2" HeightRequest="100" Spacing="40">
+                <Button Clicked="saved_Clicked" x:Name="saved" TextColor="White" HeightRequest="40" WidthRequest="200" Text="Save" BackgroundColor="LightGreen" CornerRadius="5"/>
+                <Button TextColor="White" HeightRequest="40" WidthRequest="200" Text="Exit and Hold" BackgroundColor="Crimson" CornerRadius="5" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

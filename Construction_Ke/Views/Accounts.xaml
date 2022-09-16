@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.AccountPage"
+             xmlns:vmodel="clr-namespace:Construction_Ke.ViewModel.AccountsVM"
+             Title="Accounts">
+    <ScrollView>
+        <Grid ColumnSpacing="15" RowSpacing="4" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Column="0" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="Center">
+                    <Image Source="accounting.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    
+                    <Label HorizontalTextAlignment="Center" FontSize="Medium" Text="Accounting Master"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Company"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Chart of Accounts"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadSettingsAccounts}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Accounts Settings"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Fiscal Year"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadAccountingDimension}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Accounting Dimension"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFinanceBook}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Finance Book"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AccountingPeriod}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Accounting Period"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadPaymentTerm}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Payment Term"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    
+                </StackLayout>
+            </Frame>
+            <Frame  Grid.Column="1" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                <StackLayout Margin="2">
+                    <Image Source="ledger.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Ledger Manager"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Journal Entry"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Journal Entry Template"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadSettingsAccounts}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". General Ledger"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Customer Ledger Summary"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadAccountingDimension}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Supplier Ledger Summary"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame  Grid.Column="2" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Image Source="card_payment.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Account Payable"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Purchase Invoice"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Supplier"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadSettingsAccounts}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Payment Entry"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Accounts Payable"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadAccountingDimension}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Account Payable Summary"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadAccountingDimension}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Purchase Register"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame  Grid.Column="3" Grid.Row="0" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Image Source="income.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Account Receivable"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Sales Invoice"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Customer"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadSettingsAccounts}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Payment Entry"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Payment Request"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadAccountingDimension}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Account Receivable"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadAccountingDimension}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Account Receivable Summary"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadWBPay}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label TextColor="DodgerBlue">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Weighbridge Payments"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame VerticalOptions="Fill" Grid.Column="0" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Fill">
+                <StackLayout>
+                    <Image Source="bank.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Bank Payments"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Create Account"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Bank Reconcilliation"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame  Grid.Column="1" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill">
+                <StackLayout>
+                    <Image Source="transaction_list.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Financial Statements"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Cash Flow"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Balance Sheet"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadSettingsAccounts}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Trial Balance"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Profit and Loss Statement"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Consolidated Financial Statement"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+            
+            <Frame Grid.Column="2" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill">
+                <StackLayout>
+                    <Image Source="cost.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Cost and Budeting"></Label>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Budget"
+                                      TextDecorations="Underline">
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadCompany}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Accounting Dimension"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadSettingsAccounts}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Budget Variance Report"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoadFiscalYear}" NumberOfTapsRequired="1"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text=". Monthly Distribution"
+                                      TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding .}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame  Grid.Column="3" Grid.Row="1" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   Margin="2"
+                                   
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill">
+                <StackLayout>
+                    <Image Source="business_report.png"
+                                           Aspect="AspectFill"
+                                           MaximumHeightRequest="100"
+                                           MaximumWidthRequest="100"
+                                           HorizontalOptions="Center" />
+                    <Label FontSize="Medium" HorizontalTextAlignment="Center" Text="Reports"></Label>
+                    <Button Command="{Binding LoadAccReports}" MaximumWidthRequest="150" Text="View Reports" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>

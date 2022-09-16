@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.AccountView.WBAccount"
+             xmlns:model ="clr-namespace:Construction_Ke.Model"
+             BackgroundColor="WhiteSmoke"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel.AccountsVM"
+             Title="Weighbridge Accounting">
+    <Grid ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <SearchBar WidthRequest="200" Margin="5" Placeholder="Search" HorizontalOptions="Start" HeightRequest="50" Grid.Column="2"/>
+        <Button WidthRequest="210" HorizontalOptions="Start" Text="Weighbridge Accounts" Grid.Row="0" HeightRequest="60" Grid.Column="1" ImageSource="ham_menu.png"/>
+        <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Row="0" Grid.Column="3">
+            <Button HeightRequest="40" ImageSource="filter.png" Text="Filter"/>
+            <Button Command="{Binding LoadWBPayments}" HeightRequest="40" ImageSource="reset.png" Text="Reset"/>
+            <Button HeightRequest="40" ImageSource="more.png"/>
+            <Button Clicked="Button_Clicked"  HeightRequest="40" ImageSource="joyent.png" Text="Add Payment"/>
+        </HorizontalStackLayout>
+
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Spacing="10" Grid.Column="1">
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Customers" FontAttributes="Bold"/>
+                    <Label Text="{Binding Customer, Mode=TwoWay}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="New Payments" FontAttributes="Bold"/>
+                    <Label Text="{Binding Payment, Mode=TwoWay}"/>
+                    <Label Text="KSh"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="New Customers" FontAttributes="Bold"/>
+                    <Label Text="{Binding NewCustomers, Mode=TwoWay}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="INBank" FontAttributes="Bold"/>
+                    <Label Text="{Binding InBank, Mode=TwoWay}"/>
+                    <Label Text="KSh"/>
+                </HorizontalStackLayout>
+                <Label Text="Customer Details" FontAttributes="Italic" TextColor="DodgerBlue"/>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Customer" FontAttributes="Bold"/>
+                    <Label x:Name="customer" Text=""/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Account" FontAttributes="Bold"/>
+                    <Label x:Name="accounti" Text=""/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="MPESA TR Code" FontAttributes="Bold"/>
+                    <Label x:Name="mpesa" Text=""/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Deposit" FontAttributes="Bold"/>
+                    <Label x:Name="depositi" Text=""/>
+                    <Label Text="KSh"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Material" FontAttributes="Bold"/>
+                    <Label x:Name="material" Text=""/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="Tonnes" FontAttributes="Bold"/>
+                    <Label x:Name="uzito" Text=""/>
+                </HorizontalStackLayout>
+                <!--<Button WidthRequest="230" BackgroundColor="Purple" TextColor="White" Text="Refresh" Command="{Binding LoadWBPayments}"/>-->
+            </VerticalStackLayout>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <HorizontalStackLayout Grid.Row="0">
+                    <!--<Line WidthRequest="150" MaximumWidthRequest="200"  StrokeDashArray="2" X1="0" X2="100" Y2="0" Y1="100"/>-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="85"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <!--<Label Text="Sel" Grid.Column="0"/>-->
+                        <Label Text="#" Grid.Row="0" Grid.Column="1"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="Driver Name"/>
+                        <Label Grid.Row="0" Grid.Column="3" Text="Phone"/>
+                        <Label Grid.Row="0" Grid.Column="4" Text="Plate"/>
+                        <Label Grid.Row="0" Grid.Column="5" Text="AccountNo"/>
+                        <Label Grid.Row="0" Grid.Column="6" Text="MpesaUid"/>
+                        <Label Grid.Row="0" Grid.Column="7" Text="Deposit"/>
+                        <Label Grid.Row="0" Grid.Column="8" Text="Balance"/>
+                        <Label Grid.Row="0" Grid.Column="9" Text="Material"/>
+                        <Label Grid.Row="0" Grid.Column="10" Text="Tonnes"/>
+                        <Label Grid.Row="0" Grid.Column="11" Text="Date"/>
+                    </Grid>
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1">
+                    <Frame>
+                        <RefreshView HeightRequest="300" x:DataType="local:WBAccViewMoodels" Command="{Binding LoadWBPayments}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                            <CollectionView SelectionChanged="CollectionView_SelectionChanged" SelectionMode="Single" MinimumHeightRequest="200" MaximumHeightRequest="300" ItemsSource="{Binding WBCustomerDepo}">
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid  x:DataType="model:WBCustomerDeposit">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="140"/>
+                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="80"/>
+                                                <ColumnDefinition Width="140"/>
+                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition Width="125"/>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition Width="85"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <!--<CheckBox Color="DodgerBlue" Grid.Column="0" />-->
+                                            <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1"/>
+                                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding Driver}"/>
+                                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding Phone}"/>
+                                            <Label Grid.Row="0" Grid.Column="4" Text="{Binding Plate}"/>
+                                            <Label Grid.Row="0" Grid.Column="5" Text="{Binding AccountNo}"/>
+                                            <Label Grid.Row="0" Grid.Column="6" Text="{Binding MpesaUid}"/>
+                                            <Label  Grid.Row="0" Grid.Column="7" Text="{Binding Deposit}"/>
+                                            <Label  Grid.Row="0" Grid.Column="8" Text="{Binding Balance}"/>
+                                            <Label  Grid.Row="0" Grid.Column="9" Text="{Binding Material}"/>
+                                            <Label  Grid.Row="0" Grid.Column="10" Text="{Binding Tonage}"/>
+                                            <Label  Grid.Row="0" Grid.Column="11" Text="{Binding PaidOn}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </Frame>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <Button BackgroundColor="WhiteSmoke" TextColor="Black" Text="Prev"/>
+                        <Label VerticalOptions="Center" Text="20"/>
+                        <Label VerticalOptions="Center" Text="25"/>
+                        <Button BackgroundColor="WhiteSmoke" TextColor="Black" Text="Next"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </Grid>
+
+
+
+        </Grid>
+    </Grid>
+</ContentPage>

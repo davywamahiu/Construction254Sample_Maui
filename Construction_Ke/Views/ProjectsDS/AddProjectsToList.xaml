@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:model="clr-namespace:Construction_Ke.Model"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Construction_Ke.Views.ProjectsDS.AddProjectsToList">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="WhiteSmoke" HorizontalOptions="Center" Spacing="15" Padding="15">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label HorizontalOptions="Start" Text="Contract Agreement Parameters!" />
+                <Button BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+
+            <Picker x:Name="txtContract" WidthRequest="240" SelectedItem="{Binding ProjectType}" Title="Contract Type"/>
+            <Entry WidthRequest="240" Text="{Binding ProjectName}" Placeholder="Project Title"/>
+            <Entry WidthRequest="240" Text="{Binding Road}" Placeholder="Road Name"/>
+            <Entry WidthRequest="240" Text="{Binding Distance}" Placeholder="Distance in KM"/>
+            <Picker x:Name="txtContractor" WidthRequest="240" SelectedItem="{Binding Contractor}" Title="Contractor"/>
+            <Picker x:Name="txtClient" WidthRequest="240" SelectedItem="{Binding Client}" Title="Client"/>
+            <Entry WidthRequest="240" Text="{Binding Cost}" Placeholder="Cost"/>
+            <Entry WidthRequest="240" Text="{Binding Resident}" Placeholder="Resident Engineer"/>
+            <Entry WidthRequest="240" Text="{Binding Engineer}" Placeholder="Engineer"/>
+            <Entry WidthRequest="240" Text="{Binding Surveyor}" Placeholder="Surveyor"/>
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Start Date"/>
+                <DatePicker Date="{Binding StartD}"  BackgroundColor="LightGrey"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Expected End Date"/>
+                <DatePicker Date="{Binding ExpectedD}" BackgroundColor="LightGrey"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Revised Completion Date"/>
+                <DatePicker Date="{Binding RevisedD}" BackgroundColor="LightGrey"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Signing Date"/>
+                <DatePicker Date="{Binding SignedOn}" BackgroundColor="LightGrey"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="50">
+                <Button Command="{Binding SaveContract}" TextColor="White" BackgroundColor="LightGreen" Text="Save" WidthRequest="200" HeightRequest="40"/>
+                <Button TextColor="White" HeightRequest="40" WidthRequest="200" Text="Edit Later" BackgroundColor="Crimson" CornerRadius="5" />
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

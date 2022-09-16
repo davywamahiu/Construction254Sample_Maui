@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           xmlns:model="clr-namespace:Construction_Ke.Model"
+           xmlns:local="clr-namespace:Construction_Ke.ViewModel.EmployeeViewModel"
+             x:Class="Construction_Ke.Views.HRView.HRPopupView.AddPopupView">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" BackgroundColor="WhiteSmoke"  WidthRequest="350">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Add New Employee!" />
+
+                <Button WidthRequest="50" BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                     Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Surname}" WidthRequest="240" Placeholder="Surname" Keyboard="Numeric"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding MiddleName}" WidthRequest="240" Placeholder="Midle Name" Keyboard="Numeric"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding FirstName}" WidthRequest="240" Placeholder="First Name" Keyboard="Text"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding EPin}" WidthRequest="240" Placeholder="PIN" Keyboard="Numeric"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding NatID}" WidthRequest="240" Placeholder="Employee ID" Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <mct:TextValidationBehavior InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged" 
+                        MaximumLength="8"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Phone}" WidthRequest="240" Placeholder="Mobile" Keyboard="Text">
+                <Entry.Behaviors>
+                    <mct:TextValidationBehavior InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged" 
+                        MaximumLength="10"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding KRAPin}" WidthRequest="240" Placeholder="KRA PIN" Keyboard="Text">
+                <Entry.Behaviors>
+                    <mct:MultiValidationBehavior
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}">
+                        <mct:TextValidationBehavior ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                       MinimumLength="6" />
+                        <mct:CharactersValidationBehavior ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                       CharacterType="Digit" MaximumCharacterTypeCount="10"/>
+                    <mct:CharactersValidationBehavior
+                       CharacterType="LowercaseLetter" ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                       MaximumCharacterTypeCount="0" />
+                    <mct:CharactersValidationBehavior
+                       CharacterType="UppercaseLetter" ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        MaximumCharacterTypeCount="2"
+                       MinimumLength="1" />
+                        <mct:CharactersValidationBehavior ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                       CharacterType="NonAlphanumericSymbol"
+                       MaximumCharacterTypeCount="0" />
+                        <mct:CharactersValidationBehavior ValidStyle="{StaticResource ValidEntryStyle}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                       CharacterType="Whitespace"
+                       MaximumCharacterTypeCount="0" />
+                    </mct:MultiValidationBehavior>
+
+                </Entry.Behaviors>
+            </Entry>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Salary}" WidthRequest="240" Placeholder="Salary" Keyboard="Numeric"/>
+            <Picker x:Name="role" WidthRequest="240" SelectedItem="{Binding Role}" Title="Role"/>
+            <Picker x:Name="profession" WidthRequest="240" SelectedItem="{Binding Profession}" Title="Profession"/>
+            <Picker x:Name="supervisor" Title="Supervisor" SelectedItem="{Binding Supervisor}"  WidthRequest="240"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Country}" WidthRequest="240" Placeholder="Country" Keyboard="Text"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding County}" WidthRequest="240" Placeholder="County" Keyboard="Text"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding SubCounty}" WidthRequest="240" Placeholder="Sub-County" Keyboard="Text"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Village}" WidthRequest="240" Placeholder="Village" Keyboard="Numeric"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Command="{Binding SaveEmployee}" TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="100" Text="Save"/>
+                <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.WeightBridge.WBSettings"
+             xmlns:local="clr-namespace:Construction_Ke.ViewModel"
+             xmlns:model="clr-namespace:Construction_Ke.Model"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.BackgroundColor="DarkGray">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" BackgroundColor="WhiteSmoke">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="120">
+                <Label TextColor="Black" HorizontalTextAlignment="Center" Text="Configure Weighbridge Ports!" />
+                <Button Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+            <Frame BackgroundColor="Transparent" HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                <StackLayout VerticalOptions="Center" BackgroundColor="WhiteSmoke">
+                    
+                    <HorizontalStackLayout BackgroundColor="White" Spacing="30">
+                        <Picker  IsEnabled="{Binding EnableDisableSettings}"   TitleColor="Black" Title="BaudRate" WidthRequest="150"/>
+                        <Button HeightRequest="40" Text="Refresh" BackgroundColor="DodgerBlue" TextColor="White"  Command="{Binding RefreshPorts}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout BackgroundColor="White" Spacing="30">
+                        <Picker  IsEnabled="{Binding EnableDisableSettings}"  TitleColor="Black" Title="Stop Bits" WidthRequest="150"/>
+                        <Picker  IsEnabled="{Binding EnableDisableSettings}" TitleColor="Black" Title="Start Bits" WidthRequest="150"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout BackgroundColor="White" Spacing="30">
+                        <Picker  IsEnabled="{Binding EnableDisableSettings}"  TitleColor="Black" Title="BaudRate" WidthRequest="150"/>
+                        <Picker  IsEnabled="{Binding EnableDisableSettings}"  TitleColor="Black" Title="Parity" WidthRequest="150"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Row="3" Margin="0, 0 ,0 ,5">
+                        <Label Text="Data Terminal Ready"/>
+                        <CheckBox VerticalOptions="Center" IsChecked="{Binding IsDTR, Mode=TwoWay}"
+                                      IsEnabled="{Binding EnableDisableSettings}"/>
+                        <Label Text="Request To Send"/>
+                        <CheckBox VerticalOptions="Center" IsChecked="{Binding IsRTS, Mode=TwoWay}"
+                                      IsEnabled="{Binding EnableDisableSettings}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout BackgroundColor="White" Spacing="30" Padding="20">
+                        <Button Command="{Binding Open}" BackgroundColor="LightGreen"  FontSize="Medium" WidthRequest="100" Text="Save"/>
+                        <Button Command="{Binding Close}" BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Reset"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

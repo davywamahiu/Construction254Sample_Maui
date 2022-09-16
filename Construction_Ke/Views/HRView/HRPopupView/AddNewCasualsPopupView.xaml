@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Construction_Ke.Views.HRView.HRPopupView.AddNewCasualsPopupView">
+    <ScrollView>
+        <VerticalStackLayout WidthRequest="350" BackgroundColor="WhiteSmoke" Spacing="10" Grid.Column="1">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Add Casual Employee!" />
+
+                <Button WidthRequest="50" BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                     Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Surname}" WidthRequest="240" Placeholder="Surname" Keyboard="Numeric"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding MiddleName}" WidthRequest="240" Placeholder="Midle Name" Keyboard="Numeric"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding FirstName}" WidthRequest="240" Placeholder="First Name" Keyboard="Text"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding EPin}" WidthRequest="240" Placeholder="Casual No." Keyboard="Numeric">
+                
+            </Entry>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding NatID}" WidthRequest="240" Placeholder="National ID" Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <toolkit:CharactersValidationBehavior 
+                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                ValidStyle="{StaticResource ValidEntryStyle}"
+                Flags="ValidateOnValueChanged"
+                CharacterType="Digit" MinimumLength="8"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Phone}" WidthRequest="240" Placeholder="Mobile" Keyboard="Text">
+                <Entry.Behaviors>
+                    <mct:TextValidationBehavior InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged" 
+                        MaximumLength="10"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding Wages}" WidthRequest="240" Placeholder="Wages Per Day" Keyboard="Numeric"/>
+            <Entry PlaceholderColor="DodgerBlue" Text="{Binding OvertimeRates}" WidthRequest="240" Placeholder="Overtime Rate" Keyboard="Numeric"/>
+            <Picker x:Name="department" WidthRequest="240" SelectedItem="{Binding Departmnet}" Title="Division"/>
+            <Picker x:Name="supervisor" WidthRequest="240" SelectedItem="{Binding Supervisor}" Title="Supervisor"/>
+            <Picker x:Name="estatus" WidthRequest="240" SelectedItem="{Binding EStatus}" Title="Status"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Command="{Binding SaveCasualEmp}" TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="100" Text="Save"/>
+                <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

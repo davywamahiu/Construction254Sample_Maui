@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           xmlns:model="clr-namespace:Construction_Ke.Model"
+           
+             x:Class="Construction_Ke.Views.AssetsView.AssetsPopupView.AddNewMachinery"
+             >
+    <ScrollView>
+        <VerticalStackLayout WidthRequest="350" BackgroundColor="WhiteSmoke" Spacing="10" Grid.Column="1">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label TextColor="Black" HorizontalOptions="Start" Text="Add New Machinery!" />
+
+                <Button WidthRequest="50" BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+            <Label FontSize="Medium" BackgroundColor="WhiteSmoke" HorizontalTextAlignment="Center" Text="Select A Machine to edit" HorizontalOptions="Center"></Label>
+            <Entry Text="{Binding MId}" WidthRequest="240" Placeholder="Machine ID" Keyboard="Numeric"/>
+            <Entry Text="{Binding RegNo}" WidthRequest="240" Placeholder="Machine RegNo" Keyboard="Numeric"/>
+            <Entry Text="{Binding ChasisNo}" WidthRequest="240" Placeholder="ChasisNo" Keyboard="Text"/>
+            <Entry Text="{Binding EngineNo}" WidthRequest="240" Placeholder="EngineNo"/>
+            <Entry Text="{Binding Cost}" WidthRequest="240" Placeholder="Cost" Keyboard="Text"/>
+            <Entry Text="{Binding Yearz}" WidthRequest="240" Placeholder="Year of purchase"/>
+            <Picker x:Name="logbook" SelectedItem="{Binding Logbook}" WidthRequest="240" Title="Logbook"/>
+            <Picker x:Name="condt" SelectedItem="{Binding Condition}" WidthRequest="240" Title="Condition"/>
+            <Picker x:Name="vtyp" SelectedItem="{Binding VehiclType}" Title="Machinery Type"  WidthRequest="240"/>
+            <Picker x:Name="useds" SelectedItem="{Binding UsedStatus}"  WidthRequest="240" Title="In Use"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button Command="{Binding SaveMachinery}"  TextColor="White" BackgroundColor="LightGreen" FontSize="Medium" WidthRequest="100" Text="Save"/>
+                <Button BackgroundColor="Crimson" TextColor="White" FontSize="Medium" WidthRequest="134" Text="Clear Text"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>

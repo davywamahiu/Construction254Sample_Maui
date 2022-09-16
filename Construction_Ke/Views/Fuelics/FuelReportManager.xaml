@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Construction_Ke.Views.Fuelics.FuelReportManager"
+             Title="FuelReportManager">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Padding="10" Grid.Column="1" Grid.Row="0">
+                <SearchBar Placeholder="Search" WidthRequest="240"/>
+                <Frame MaximumWidthRequest="600" MinimumWidthRequest="300">
+                    <CollectionView MinimumHeightRequest="350" MaximumHeightRequest="450">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </VerticalStackLayout>
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="20">
+                <RadioButton Content="Report Name"/>
+                <RadioButton Content="Report Code"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="2" Spacing="30">
+                <ImageButton BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="broom.png"/>
+                <ImageButton BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="canc.png"/>
+                <ImageButton BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="igas_station.png"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

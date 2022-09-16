@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Construction_Ke.Views.ProjectsDS.ProjePopupz.AddNewTasksPopup"
+             Shell.BackgroundColor="Gray">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" WidthRequest="350" BackgroundColor="WhiteSmoke">
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="100">
+                <Label HorizontalOptions="Start" Text="Create new Activity!" />
+                <Button BackgroundColor="WhiteSmoke" TextColor="Red" Text="X" HorizontalOptions="End" FontSize="Large" 
+                    Clicked="Button_Clicked" />
+            </HorizontalStackLayout>
+            <Picker x:Name="acproj" SelectedItem="{Binding ProjectName}" Title="Select Project" WidthRequest="240"/>
+            <Picker x:Name="activitz" SelectedItem="{Binding MyACtivitiz}" Title="Activity" WidthRequest="240"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <CheckBox HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged" x:Name="activitaz"/>
+                <Label VerticalTextAlignment="Center" Text="Custom Activity"/>
+            </HorizontalStackLayout>
+            
+            <Entry Text="{Binding ActName}" x:Name="newactivitaz" IsVisible="false" Placeholder="Personalized Activity" PlaceholderColor="DodgerBlue" WidthRequest="240"/>
+            <Entry Text="{Binding ActDependsOn}" WidthRequest="240" Placeholder="Dependencies" PlaceholderColor="DodgerBlue"/>
+            <Entry Text="{Binding ActCompCreteria}" Placeholder="Completion Criteria" PlaceholderColor="DodgerBlue" WidthRequest="240"/>
+            <DatePicker HorizontalOptions="Center" Date="{Binding ActStartDate}"/>
+            <DatePicker HorizontalOptions="Center" Date="{Binding ActEndDate}"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button Command="{Binding SaveNewActivity}" TextColor="White" BackgroundColor="LightGreen" Text="Save" WidthRequest="100" HeightRequest="40"/>
+                <Button TextColor="White" HeightRequest="40" WidthRequest="140" Text="Clear" BackgroundColor="Crimson" CornerRadius="5" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</mct:Popup>
