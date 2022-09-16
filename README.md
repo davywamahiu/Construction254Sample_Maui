@@ -1,6 +1,7 @@
 # Construction254Sample_Maui
 A part of a whole Project, Our Production Software upgrade will look and feel close to this. You can always switch between what platforms to use.
 Widee spread use of Advanced concept on SQL and UI Design Concepts such as;
+
      1. Use of CollectionView to create DataGrids.
      2. Use of Data manipulation technique using Datagrid(CollectionView).
      3. Use of MVVM litterally everywhere, almost.
