@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Construction_Ke.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Construction_Ke"
+    xmlns:vws="clr-namespace:Construction_Ke.Views"
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutHeaderBehavior="CollapseOnScroll">
+
+    
+
+    <ShellContent
+        Title="Home"
+        Icon="home_page.png"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent Title="Accounts"
+                  Route="Accounts"
+                  ContentTemplate="{DataTemplate vws:AccountPage}"
+                  Icon="banked.png"/>
+    <ShellContent Title="Procurement"
+                  Route="Procurement"
+                  ContentTemplate="{DataTemplate vws:Procurement}"
+                  Icon="shoppe.png"/>
+    <ShellContent Title="Fuel Manager"
+                  Route="FuelPage"
+                  ContentTemplate="{DataTemplate vws:FuelPage}"
+                  Icon="igas_station.png"/>
+    <ShellContent Title="Weighbridge"
+                  Route="Weighbridge"
+                  ContentTemplate="{DataTemplate vws:Weighbridge}"
+                  Icon="weight_station.png"/>
+    <ShellContent Title="Project Manager"
+                  ContentTemplate="{DataTemplate vws:ProjectsDs}"
+                  Route="ProjectsDs"
+                  Icon="card_index.png"/>
+    <ShellContent Title="Human Resource"
+                  ContentTemplate="{DataTemplate vws:HumanResourcePage}"
+                  Route="HumanResourcePage"
+                  Icon="staff.png"/>
+    <ShellContent Title="Asset Management"
+                  Route="AssetConstrunctionManager"
+                  ContentTemplate="{DataTemplate vws:AssetConstrunctionManager}"
+                  Icon="asset.png"/>
+    <ShellContent Title="User Manager"
+                  Icon="administrative_tools.png"/>
+    <ShellContent Title="Configuration"
+                  Icon="microsoft_admin.png"/>
+
+</Shell>
