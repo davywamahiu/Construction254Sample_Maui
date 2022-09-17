@@ -11,6 +11,8 @@ Widee spread use of Advanced concept on SQL and UI Design Concepts such as;
      7. UI advanced design concept.
 
 Sample Images and impressions... 
+
+
 Project management module, task breakdown.
 <img src="https://github.com/davywamahiu/Construction254Sample_Maui/Images/Screenshot 2022-09-17 211115.png" height="250" width="450" alt="Alt text" title="Project.">
 Human Resource Module
