@@ -9,3 +9,12 @@ Widee spread use of Advanced concept on SQL and UI Design Concepts such as;
      5. Use of API's ---> Check LoginWebAPI.
      6. Use of itext in this demo version only.
      7. UI advanced design concept.
+
+Sample Images and impressions... 
+Project management module, task breakdown.
+
+Human Resource Module
+
+Employee Management module 
+
+plus new employee registration.
